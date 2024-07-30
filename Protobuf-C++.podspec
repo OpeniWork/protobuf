@@ -16,7 +16,11 @@ Pod::Spec.new do |s|
   s.source_files = 'src/google/protobuf/*.{h,cc,inc}',
                    'src/google/protobuf/stubs/*.{h,cc}',
                    'src/google/protobuf/io/*.{h,cc}',
-                   'src/google/protobuf/util/*.{h,cc}'
+                   'src/google/protobuf/util/*.{h,cc}',
+                   'third_party/utf8_range/utf8_range.h',
+                   'third_party/utf8_range/utf8_range.c',
+                   'third_party/utf8_range/utf8_validity.h',
+                   'third_party/utf8_range/utf8_validity.cc'
 
   # Excluding all the tests in the directories above
   s.exclude_files = 'src/google/**/*_test.{h,cc,inc}',
@@ -37,7 +41,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '12.0'
   s.watchos.deployment_target = '6.0'
   s.visionos.deployment_target = '1.0'
-
+  s.dependency 'abseil'
   s.pod_target_xcconfig = {
     # Do not let src/google/protobuf/stubs/time.h override system API
     'USE_HEADERMAP' => 'NO',
